@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title th:text="${title}">Insert title here</title>
+</head>
+
+<body>
+	<h1 th:text="${title}"></h1>
+	<a th:href="@{/form}">crear +</a>
+
+	<table>
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>nombre</th>
+				<th>precio</th>
+				<th>fecha</th>
+				<th>categoria</th>
+				<th>Ediatr</th>
+				<th>Eliminar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="product: ${products}">
+				<td><a th:href="@{/ver/} + ${product.id}" th:text="${#strings.abbreviate(product.id, 10)}"></a></td>
+				<td th:text="${product.name}"></td>
+				<td th:text="${#numbers.formatCurrency(product.price)}"></td>
+				<td th:text="${#calendars.format(product.createdAt, 'dd/MM/yyyy')}"></td>
+				<td th:text="${product.category.name}"></td>
+				<td><a th:href="@{/form/} + ${product.id}">editar</a></td>
+				<td><a th:href="@{/eliminar/} + ${product.id}" onclick="return confirm('estas seguro que desea eliminar?');">eliminar</a></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "config.base.api",
+      "type": "java.lang.String",
+      "description": "A description for 'config.base.api'"
+    }
+  ]
+}
